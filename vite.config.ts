@@ -27,8 +27,8 @@ const viteConfig = ({ mode }: ConfigEnv): UserConfig => {
           changeOrigin: true,
           secure: false,
         },
-        '/gql': {
-          target: 'http://localhost:3000',
+        '/graphql': {
+          target: 'https://vortex.korabli.su/api/graphql',
           changeOrigin: true,
           secure: false,
         },
