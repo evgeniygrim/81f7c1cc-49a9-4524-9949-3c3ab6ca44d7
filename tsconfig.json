@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+      "declaration": false,
+      "target": "esnext",
+      "useDefineForClassFields": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "removeComments": false,
+      "strict": true,
+      "jsx": "preserve",
+      "sourceMap": false,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "skipDefaultLibCheck": true,
+      "lib": ["esnext", "dom"],
+      "types": ["element-plus/global"],
+      "baseUrl": "./",
+      "paths": {
+          "/@/*": ["./src/*"]
+      },
+  },
+  "exclude": ["node_modules"]
+}
