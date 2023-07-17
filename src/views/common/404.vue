@@ -1,6 +1,6 @@
 <template>
   <div>
-    hello
+    404
   </div>
 </template>
 
