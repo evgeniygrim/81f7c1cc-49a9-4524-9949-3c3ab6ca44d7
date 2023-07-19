@@ -1,1 +1,1 @@
-export const url = "https://eu.wargaming.net/registration/ru/?game=wows";
+export const url = 'https://eu.wargaming.net/registration/ru/?game=wows';

@@ -1,10 +1,9 @@
 @use "element-plus/theme-chalk/src/dark/css-vars.scss" as *;
-
 @use  './helpers' as *;
+@import url('https://fonts.googleapis.com/css?family=Roboto Condensed');
 
 html, body {
-  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei', Arial, sans-serif;
+  font-family: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import type { UserConfig, ConfigEnv } from 'vite'
+import { default as _ } from 'lodash'
 
 const pathResolve = (dir: string): any => {
   return resolve(__dirname, '.', dir)
@@ -28,7 +28,10 @@ const viteConfig = ({ mode }: ConfigEnv): UserConfig => {
           secure: false,
         },
         '/graphql': {
-          target: 'https://vortex.korabli.su/api/graphql',
+          target: 'https://vortex.korabli.su/api/',
+          headers: {
+            origin: 'localhost',
+          },
           changeOrigin: true,
           secure: false,
         },

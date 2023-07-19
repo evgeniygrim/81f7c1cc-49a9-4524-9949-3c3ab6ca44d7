@@ -1,6 +1,8 @@
+$--font-family: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
+
 $--colors: (
   "primary": (
-    "base": green,
+    "base": #fd6200,
   ),
   "success": (
     "base": #21ba45,
@@ -19,19 +21,21 @@ $--colors: (
   ),
 );
 
-// You should use them in scss, because we calculate it by sass.
-// comment next lines to use default color
 @forward "element-plus/theme-chalk/src/common/var.scss" with (
   // do not use same name, it will override.
   $colors: $--colors,
-  // $button-padding-horizontal: ("default": 50px)
+  $font-family: (
+    '': $--font-family
+  ),
 );
-
-// if you want to import all
-// @use "element-plus/theme-chalk/src/index.scss" as *;
-
-// You can comment it to hide debug info.
-// @debug $--colors;
 
 // custom dark variables
 @use "./dark.scss";
+
+// patches
+:root {
+  --el-border-radius-base: 0;
+}
+.el-button {
+  font-family: $--font-family;
+}

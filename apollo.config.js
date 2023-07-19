@@ -4,7 +4,7 @@ module.exports = {
     service: {
       name: 'warship-wall',
       // URL to the GraphQL API
-      url: 'https://vortex.korabli.su/api/graphql',
+      url: 'https://vortex.korabli.su/api/graphql/glossary',
     },
     // Files processed by the extension
     includes: [

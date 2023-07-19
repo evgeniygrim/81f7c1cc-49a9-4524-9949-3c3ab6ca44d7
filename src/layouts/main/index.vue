@@ -1,16 +1,14 @@
 <template>
   <div class="main-layout">
-    <el-container>
-      <el-header :height="'96px'" class="main-header">
-        <Header></Header>  
-      </el-header>
-      <el-main>
-        <router-view></router-view>
-      </el-main>
-      <el-footer>
-        <Footer></Footer>
-      </el-footer>
-    </el-container>
+    <header class="main-header">
+      <Header></Header>
+    </header>
+    <main class="main-content">
+      <router-view></router-view>
+    </main>
+    <footer>
+      <Footer></Footer>
+    </footer>
   </div>
 </template>
 
@@ -20,7 +18,7 @@ import Footer from './footer.vue'
 export default {
   components: {
     Header,
-    Footer
+    Footer,
   },
   setup () {
     return {}
@@ -36,5 +34,8 @@ export default {
   }
   .main-header {
     background-color: $bg
+  }
+  .main-content {
+    flex: 1;
   }
 </style>

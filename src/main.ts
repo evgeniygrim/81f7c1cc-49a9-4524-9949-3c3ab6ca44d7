@@ -1,5 +1,6 @@
-import '/@/styles/index.scss'
 import "element-plus/dist/index.css";
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+import '/@/styles/index.scss'
 
 import App from '/@/App.vue';
 import { createApp } from 'vue';
@@ -10,16 +11,19 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ElementPlus from 'element-plus';
-import { apolloProvider } from '/@/api/Apollo';
+
+import VueVirtualScroller from 'vue-virtual-scroller'
+import { apolloProvider } from './plugins/apollo';
 
 const app = createApp(App)
 
+
 library.add(far);
 library.add(fas);
-
 app.component('font-awesome-icon', FontAwesomeIcon)
-app.use(apolloProvider)
 app.use(router)
 app.use(store)
+app.use(apolloProvider)
 app.use(ElementPlus)
+app.use(VueVirtualScroller)
 app.mount('#app')

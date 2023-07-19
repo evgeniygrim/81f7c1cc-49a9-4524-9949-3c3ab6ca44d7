@@ -1,10 +1,12 @@
 // only scss variables
 $--colors: (
-  "primary": (
-    "base": #d18d36,
-  ),
+);
+
+$--border-radius: (
+  "base": 0px,
+  "small": 0px,
 );
 
 @forward "element-plus/theme-chalk/src/dark/var.scss" with (
-  $colors: $--colors
+  $colors: $--colors,
 );
