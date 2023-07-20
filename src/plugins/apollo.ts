@@ -7,6 +7,7 @@ import { onError } from '@apollo/client/link/error'
 import { useErrorsStore } from '../stores/Error'
 import { setContext } from '@apollo/client/link/context'
 import { createApolloProvider } from '@vue/apollo-option'
+import { ElNotification } from 'element-plus'
 
 const httpLink = createHttpLink({
   uri: '/graphql/glossary/',
@@ -17,8 +18,14 @@ const errorHandler = onError(({ graphQLErrors }) => {
   if (graphQLErrors != null) {
     useErrorsStore().$patch({
       message: graphQLErrors[0].message,
-      category: graphQLErrors[0].extensions.category,
-      fields: graphQLErrors[0].extensions.validation ?? { input: {} }
+      category: graphQLErrors[0].extensions?.category,
+      fields: graphQLErrors[0].extensions?.validation ?? { input: {} }
+    })
+
+    void ElNotification({
+      title: 'Error',
+      message: graphQLErrors[0].message,
+      type: 'error',
     })
   }
 })
