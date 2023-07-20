@@ -1,6 +1,5 @@
-# warships-test
-
-решение [задачи](https://gist.github.com/nonamenix/fc7609de3ebe2642db6324bc962295b2).
+# Решение
+[задача](https://gist.github.com/nonamenix/fc7609de3ebe2642db6324bc962295b2).
 
 ### Запуск
 ```bash
