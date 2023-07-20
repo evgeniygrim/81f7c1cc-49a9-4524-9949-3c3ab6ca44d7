@@ -12,18 +12,19 @@ export interface VehicleFilters {
 
 const vehicleRepo = useRepo(Vehicle);
 
-export const useVehicleFilters = defineStore('VehicleFilters', {
-  state: () =>
-    ({
-      level: AnyFilter,
-      nation: AnyFilter,
-      type: AnyFilter,
-    } as VehicleFilters),
+const initial: VehicleFilters = {
+  level: AnyFilter,
+  nation: AnyFilter,
+  type: AnyFilter,
+}
+
+export const useVehicleQuery = defineStore('VehicleQuery', {
+  state: () => initial,
   getters: {
     ids: (state) => {
       const { level, nation, type } = state;
 
-      const vehicle = vehicleRepo
+      const vehicles = vehicleRepo
         .where((vehicle: Vehicle) => {
           return (
             (vehicle.level == level || level == AnyFilter) &&
@@ -33,7 +34,7 @@ export const useVehicleFilters = defineStore('VehicleFilters', {
         })
         .get();
 
-      return (vehicle || []).map(({ id }) => ({ id }));
+      return (vehicles || []).map(({ id }) => ({ id }));
     },
   },
   actions: {

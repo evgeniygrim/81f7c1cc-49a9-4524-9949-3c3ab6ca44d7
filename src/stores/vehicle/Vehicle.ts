@@ -2,7 +2,7 @@ import { Model } from 'pinia-orm';
 import { Nation } from './Nation';
 import { VehicleType } from './VehicleType';
 
-export interface IconsVehicle {
+export interface VehicleIcons {
   large?: string,
   small?: string,
   default?: string,
@@ -26,9 +26,9 @@ export class Vehicle extends Model {
       description : this.string(null),
       icons : this.attr({}),
       level : this.number(0),
-      nationName : this.attr(''),
+      nationName : this.string(''),
       nation : this.hasOne(Nation, 'name', 'nationName'),
-      typeName : this.attr(''),
+      typeName : this.string(''),
       type : this.hasOne(VehicleType, 'name', 'typeName' ),
     }
   };
@@ -37,10 +37,10 @@ export class Vehicle extends Model {
   declare title: string
   declare titleShort: string
   declare description: string
-  declare icons: IconsVehicle
+  declare icons: VehicleIcons
   declare level: number
+  declare nationName: Nation['name']
   declare nation: Nation
-  declare nationName: string
-  declare typeName: string
+  declare typeName: VehicleType['name']
   declare type: VehicleType
 }

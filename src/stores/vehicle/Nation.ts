@@ -1,6 +1,6 @@
 import { Model } from 'pinia-orm';
 
-export interface NationIcon {
+export interface NationIcons {
   default?: string,
   tiny?: string,
   small?: string,
@@ -14,7 +14,7 @@ export class Nation extends Model {
 
   static fields() {
     return {
-      name: this.attr(''),
+      name: this.string(''),
       title: this.string(null),
       color: this.string(null),
       icons: this.attr({}),
@@ -24,5 +24,5 @@ export class Nation extends Model {
   declare name: string;
   declare title: string;
   declare color: string;
-  declare icons: NationIcon; 
+  declare icons: NationIcons; 
 }

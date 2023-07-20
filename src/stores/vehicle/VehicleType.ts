@@ -1,6 +1,6 @@
 import { Model } from 'pinia-orm';
 
-export interface IconsVehicleClass{
+export interface VehicleTypeIcons{
   default?: string,
   special?: string,
   normal?: string,
@@ -14,7 +14,7 @@ export class VehicleType extends Model {
 
   static fields() {
     return {
-      name: this.attr(''),
+      name: this.string(''),
       title: this.string(null),
       titleShort: this.string(null),
       icons: this.attr({}),
@@ -24,5 +24,5 @@ export class VehicleType extends Model {
   declare name: string;
   declare title: string;
   declare titleShort: string;
-  declare icons: IconsVehicleClass;
+  declare icons: VehicleTypeIcons;
 }

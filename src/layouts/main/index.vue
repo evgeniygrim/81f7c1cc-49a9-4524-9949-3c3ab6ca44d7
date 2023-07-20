@@ -27,15 +27,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $bg: #{var(--el-bg-color-overlay)};
+  $bg: #{var(--el-bg-color-page)};
   .main-layout {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 600px) {
+      padding: 0;
+    }
   }
   .main-header {
     background-color: $bg
   }
   .main-content {
     flex: 1;
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
   }
 </style>

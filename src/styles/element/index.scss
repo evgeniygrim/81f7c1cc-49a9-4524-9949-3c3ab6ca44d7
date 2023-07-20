@@ -35,6 +35,7 @@ $--colors: (
 // patches
 :root {
   --el-border-radius-base: 0;
+  --el-bg-color-overlay: --el-bg-color-page;
 }
 .el-button {
   font-family: $--font-family;
