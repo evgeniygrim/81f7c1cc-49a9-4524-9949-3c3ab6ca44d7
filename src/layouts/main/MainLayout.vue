@@ -1,24 +1,24 @@
 <template>
   <div class="main-layout">
     <header class="main-header">
-      <Header></Header>
+      <MainHeader />
     </header>
     <main class="main-content">
-      <router-view></router-view>
+      <router-view />
     </main>
     <footer>
-      <Footer></Footer>
+      <MainFooter />
     </footer>
   </div>
 </template>
 
 <script lang="ts">
-import Header from './header.vue'
-import Footer from './footer.vue'
+import MainHeader from './MainHeader.vue'
+import MainFooter from './MainFooter.vue'
 export default {
   components: {
-    Header,
-    Footer,
+    MainHeader,
+    MainFooter,
   },
   setup () {
     return {}

@@ -1,17 +1,25 @@
 <template>
-  <div class="vehicle-type-icon" v-if="vehicleType">
+  <div
+    v-if="vehicleType"
+    class="vehicle-type-icon"
+  >
     <div class="wrapper-icon">
-      <img :src="src" :alt="vehicleType.title">
+      <img
+        :src="src"
+        :alt="vehicleType.title"
+      >
     </div>
 
-    <div v-if="withTitle"> {{ vehicleType.title }}</div>
+    <div v-if="withTitle">
+      {{ vehicleType.title }}
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { PropType, defineComponent } from 'vue'
-import { VehicleType, VehicleTypeIcons } from '/@/stores/vehicle';
-import { mapRepos } from 'pinia-orm';
+import { type PropType, defineComponent } from 'vue'
+import { VehicleType, type VehicleTypeIcons } from '/@/stores/vehicle'
+import { mapRepos } from 'pinia-orm'
 
 export default defineComponent({
   props: {
@@ -33,29 +41,27 @@ export default defineComponent({
     }
   },
   setup () {
-    
-
     return {}
   },
   computed: {
     ...mapRepos({
       vehicleTypesRepo: VehicleType
     }),
-    vehicleType() {
-      return this.vehicleTypesRepo.find(this.name);
+    vehicleType () {
+      return this.vehicleTypesRepo.find(this.name)
     },
-    src() {
-      return this.vehicleType?.icons[this.type];
+    src () {
+      return this.vehicleType?.icons[this.type]
     },
-    style() {
+    style () {
       return {
-        size: this.size ? this.size + 'px' : '1em',
+        size: (this.size !== null || this.size === 0) ? `${this.size}px` : '1em',
       }
     }
   }
 })
 </script>
-  
+
 <style scoped lang="scss">
   $icon-size: v-bind('style.size');
   .vehicle-type-icon{

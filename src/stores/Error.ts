@@ -1,15 +1,17 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia'
 
 export interface ErrorsState {
-  message: string | null,
-  category: string | null,
-  fields: any
+  message: string | null
+  category: string | null
+  fields: unknown
 }
 
-export const useErrorsStore = defineStore("errors", {
-  state: () => ({
-    message: null,
-    category: null,
-    fields: { input: {} },
-  } as ErrorsState),
-});
+const initial: ErrorsState = {
+  message: null,
+  category: null,
+  fields: { input: {} }
+}
+
+export const useErrorsStore = defineStore('errors', {
+  state: () => initial,
+})

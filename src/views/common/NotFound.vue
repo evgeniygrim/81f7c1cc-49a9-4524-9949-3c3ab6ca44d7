@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    404 !!
   </div>
 </template>
 
@@ -9,8 +9,6 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   setup () {
-    
-
     return {}
   }
 })

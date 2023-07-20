@@ -1,25 +1,40 @@
 <template>
-  <div class="vehicle-info" v-if="vehicle">
-    <div v-if="vehicle.level"  class="vehicle-level">
+  <div
+    v-if="vehicle"
+    class="vehicle-info"
+  >
+    <div
+      v-if="vehicle.level"
+      class="vehicle-level"
+    >
       <span class="roman">{{ nomar(vehicle.level) }}</span>
       <span>Уровень</span>
     </div>
     <div>
-      <vehicle-type-icon :name="vehicle?.typeName" :with-title="true" :size="size"></vehicle-type-icon>
+      <vehicle-type-icon
+        :name="vehicle?.typeName"
+        :with-title="true"
+        :size="size"
+      />
     </div>
     <div>
-      <nation-icon :name="vehicle?.nationName" :type="'small'" :with-title="true" :size="size"></nation-icon>
+      <nation-icon
+        :name="vehicle?.nationName"
+        :type="'small'"
+        :with-title="true"
+        :size="size"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { PropType, computed, defineComponent, ref } from 'vue'
-import { Vehicle } from '/@/stores/vehicle';
-import { mapRepos } from 'pinia-orm';
-import VehicleTypeIcon from './VehicleTypeIcon.vue';
-import NationIcon from '/@/components/nation/NationIcon.vue';
-import nomar from 'nomar';
+import { type PropType, defineComponent, ref } from 'vue'
+import { Vehicle } from '/@/stores/vehicle'
+import { mapRepos } from 'pinia-orm'
+import VehicleTypeIcon from './VehicleTypeIcon.vue'
+import { NationIcon } from '/@/components/nation'
+import nomar from 'nomar'
 
 export enum VehicleInfoTypes {
   full = 'full',
@@ -27,6 +42,10 @@ export enum VehicleInfoTypes {
 }
 
 export default defineComponent({
+  components: {
+    VehicleTypeIcon,
+    NationIcon
+  },
   props: {
     vehicleId: {
       type: String as PropType<Vehicle['id']>,
@@ -36,10 +55,6 @@ export default defineComponent({
       type: String as PropType<VehicleInfoTypes>,
       default: VehicleInfoTypes.short,
     }
-  },
-  components: {
-    VehicleTypeIcon,
-    NationIcon
   },
   setup () {
     return {
@@ -52,12 +67,12 @@ export default defineComponent({
     ...mapRepos({
       vehicleRepo: Vehicle
     }),
-    vehicle() {
-      return this.vehicleRepo.find(this.vehicleId);
+    vehicle () {
+      return this.vehicleRepo.find(this.vehicleId)
     },
-    styles() {
+    styles () {
       return {
-        size: this.size + 'px',
+        size: `${this.size}px`,
       }
     }
   }

@@ -1,11 +1,11 @@
-import Static from './static';
-import { createRouter, createWebHistory } from 'vue-router';
+import Static from './static'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    ...Static,
-  ],
+    ...Static
+  ]
 })
 
-export default router;
+export default router

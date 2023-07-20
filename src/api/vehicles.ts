@@ -1,8 +1,8 @@
-import gql from 'graphql-tag';
-import { apolloClient } from '../plugins/apollo';
-import { useRepo } from 'pinia-orm';
-import { Vehicle } from '../stores/vehicle';
-import { cloneDeep } from 'lodash/fp';
+import gql from 'graphql-tag'
+import { apolloClient } from '../plugins/apollo'
+import { useRepo } from 'pinia-orm'
+import { Vehicle } from '../stores/vehicle'
+import { cloneDeep } from 'lodash/fp'
 
 const GetAllVehicles = gql`
   query GetAllVehicles($lang: String) {
@@ -35,17 +35,17 @@ const GetAllVehicles = gql`
       }
     }
   }
-`;
+`
 
-export const loadVehicles = () => {
-  const repo = useRepo(Vehicle);
+export const loadVehicles = (): void => {
+  const repo = useRepo(Vehicle)
   apolloClient
     .query({
       query: GetAllVehicles,
-      variables: { lang: navigator.language || '' },
+      variables: { lang: navigator.language }
     })
     .then((res) => {
-      repo.save(cloneDeep(res.data.vehicles));
+      repo.save(cloneDeep(res.data.vehicles))
     })
-    .catch(() => null);
-};
+    .catch(() => null)
+}

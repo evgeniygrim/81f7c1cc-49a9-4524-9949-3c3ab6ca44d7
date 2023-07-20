@@ -1,19 +1,11 @@
 <template>
-  <div>
-    404
-  </div>
+  <div />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-export default defineComponent({
-  setup () {
-    
-
-    return {}
-  }
-})
+export default defineComponent({})
 </script>
 
 <style scoped>

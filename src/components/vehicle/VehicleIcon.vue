@@ -1,12 +1,17 @@
 <template>
   <div class="vehicle-icon">
-    <img ref="img" :src="src" loading="lazy" v-on:load="onLoad">
+    <img
+      ref="img"
+      :src="src"
+      loading="lazy"
+      @load="onLoad"
+    >
   </div>
 </template>
 
 <script lang="ts">
-import { PropType, defineComponent, ref } from 'vue'
-import { VehicleIcons } from '/@/stores/vehicle';
+import { type PropType, defineComponent, ref } from 'vue'
+import { type VehicleIcons } from '/@/stores/vehicle'
 
 export default defineComponent({
   props: {
@@ -19,9 +24,9 @@ export default defineComponent({
       default: 'medium',
     },
   },
-  setup() {
-    const height = ref<number>();
-    const width = ref<number>();
+  setup () {
+    const height = ref<number>()
+    const width = ref<number>()
 
     return {
       height,
@@ -29,11 +34,11 @@ export default defineComponent({
     }
   },
   computed: {
-    src() {
-      return this.source[this.type];
+    src () {
+      return this.source[this.type]
     },
-    style() {
-      const {height, width} = this.normalizeImageSize();
+    style () {
+      const { height, width } = this.normalizeImageSize()
       return {
         height,
         width
@@ -41,22 +46,22 @@ export default defineComponent({
     }
   },
   methods: {
-    onLoad(e: Event) {
-      if (e.target) {
-        const img = e.target as HTMLImageElement;
-        this.height = img.naturalHeight;
-        this.width = img.naturalWidth;
+    onLoad (e: Event) {
+      if (e.target != null) {
+        const img = e.target as HTMLImageElement
+        this.height = img.naturalHeight
+        this.width = img.naturalWidth
       }
     },
-    normalizeImageSize() {
-      if (this.height && this.width) {   
-        const height = this.$el.offsetHeight;
-        const width = this.$el.offsetWidth;
-        const naturalHeight = this.height;
-        const naturalWidth = this.width;
-  
-        const ratio = height / width;
-        const naturalRatio = naturalHeight / naturalWidth;
+    normalizeImageSize () {
+      if (Number.isInteger(this.height) && Number.isInteger(this.width)) {
+        const height = this.$el.offsetHeight
+        const width = this.$el.offsetWidth
+        const naturalHeight = this.height as number
+        const naturalWidth = this.width as number
+
+        const ratio = height / width
+        const naturalRatio = naturalHeight / naturalWidth
 
         if (ratio >= naturalRatio) {
           return {

@@ -1,17 +1,25 @@
 <template>
-  <div class="nation-icon" v-if="nation">
+  <div
+    v-if="nation"
+    class="nation-icon"
+  >
     <div class="wrapper-icon">
-      <img :src="src" :alt="nation.title">
+      <img
+        :src="src"
+        :alt="nation.title"
+      >
     </div>
 
-    <div v-if="withTitle"> {{ nation.title }}</div>
+    <div v-if="withTitle">
+      {{ nation.title }}
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { PropType, defineComponent } from 'vue'
-import { Nation, NationIcons } from '/@/stores/vehicle';
-import { mapRepos } from 'pinia-orm';
+import { type PropType, defineComponent } from 'vue'
+import { Nation, type NationIcons } from '/@/stores/vehicle'
+import { mapRepos } from 'pinia-orm'
 
 export default defineComponent({
   props: {
@@ -36,15 +44,15 @@ export default defineComponent({
     ...mapRepos({
       nationRepo: Nation
     }),
-    nation() {
-      return this.nationRepo.find(this.name);
+    nation () {
+      return this.nationRepo.find(this.name)
     },
-    src() {
-      return this.nation?.icons[this.type];
+    src () {
+      return this.nation?.icons[this.type]
     },
-    style() {
+    style () {
       return {
-        size: this.size ? this.size + 'px' : '1em',
+        size: (this.size !== null || this.size === 0) ? `${this.size}px` : '1em',
       }
     }
   }
