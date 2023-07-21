@@ -23,6 +23,6 @@
     ],
     "rules": {
       "import/no-absolute-path": "off",
-      "@typescript-eslint/comma-dangle": "off"
+      "@typescript-eslint/comma-dangle": "off",
     }
 }

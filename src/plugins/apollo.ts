@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch';
 import {
   ApolloClient,
   createHttpLink,
@@ -11,7 +12,8 @@ import { ElNotification } from 'element-plus'
 
 const httpLink = createHttpLink({
   uri: '/graphql/glossary/',
-  credentials: 'include'
+  credentials: 'include',
+  fetch,
 })
 
 const errorHandler = onError(({ graphQLErrors }) => {
